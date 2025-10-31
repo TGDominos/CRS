@@ -1,0 +1,47 @@
+USE [OnlineOrdering_Stock];
+GO
+ 
+BEGIN TRANSACTION;
+ 
+EXEC [admin].[DeleteStockEventAffectedProduct]
+    @stockEventId = 855,
+    @productCode  = N'ECBW7',
+    @sizeCode     = NULL,
+    @user         = N'tomasz.greiner';
+ 
+EXEC [admin].[DeleteStockEventAffectedProduct]
+    @stockEventId = 855,
+    @productCode  = N'TSLI',
+    @sizeCode     = NULL,
+    @user         = N'tomasz.greiner';
+ 
+EXEC [admin].[DeleteStockEventAffectedProduct]
+    @stockEventId = 855,
+    @productCode  = N'ECBW12',
+    @sizeCode     = NULL,
+    @user         = N'tomasz.greiner';
+ 
+
+ROLLBACK TRANSACTION;
+-- COMMIT TRANSACTION;
+
+---------------------------------------------
+USE [OnlineOrdering_Stock];
+GO
+ 
+BEGIN TRANSACTION;
+ 
+EXEC [admin].[DeleteStockEventAffectedComponent]
+    @stockEventId = 855,
+    @componentCode  = N'Option.BRW',
+    @sizeCode     = NULL,
+    @user         = N'tomasz.greiner';
+
+EXEC [admin].[DeleteStockEventAffectedComponent]    
+    @stockEventId = 855,
+    @componentCode  = N'Topping.BQK',
+    @sizeCode     = NULL,
+    @user         = N'tomasz.greiner';
+
+
+-- COMMIT TRANSACTION
