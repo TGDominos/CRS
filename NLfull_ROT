@@ -1,12 +1,10 @@
-USE [OnlineOrdering_Stock]
-GO
 DECLARE @countryCode  NVARCHAR(2)
 DECLARE @startDate    DATETIME
 DECLARE @endDate      DATETIME
 DECLARE @user         NVARCHAR(50)
 
 SET @countrycode  = 'NL'
-SET @startdate    = '2025-10-'
+SET @startdate    = '2025-11-12'
 SET @enddate      = NULL
 SET @user         = 'Tomasz.Greiner'
 
@@ -15,9 +13,10 @@ DECLARE @ProductCodeList  [admin].[ProductCodeList]
 DECLARE @StoreList        [admin].[StoreList]
 
 BEGIN TRANSACTION
-  INSERT INTO @ProductCodelist VALUES ('PBGV'),('PBCK '),('SBCK'),('XBCK'),('PBQA'),('EDMA'),('ECBW7'),('TSLI'),('ECBW12')
-  --INSERT INTO @ComponentList (componentCode) VALUES ('Topping.CBS'),('Topping.GV'),('Option.BRW'),('Topping.BQK')
-  INSERT INTO @StoreList (StoreNo) VALUES (32601)
+  INSERT INTO @ProductCodelist VALUES ('TKNT')
+  --INSERT INTO @ComponentList (componentCode) VALUES ()
+  INSERT INTO @StoreList (StoreNo) VALUES (30601)
+
   EXEC [admin].[AddStockEventEU]
     @countryCode, 
 	@startDate, 
@@ -27,5 +26,5 @@ BEGIN TRANSACTION
 	@ProductCodeList,
 	@StoreList
 
---ROLLBACK TRANSACTION
-COMMIT TRANSACTION
+ROLLBACK TRANSACTION
+--COMMIT TRANSACTION
